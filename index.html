@@ -3,30 +3,91 @@
 <head>
     <meta charset="utf-8" />
     <meta name="author" content="Vania">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="Carnegie Mellon University, Information Systems">
     <meta name="description" content="Vania's professional website">
     <title>Vania's Professional Website</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+
+    <!-- <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icons/favicon-32x32.png"
+    /> -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
 </head>
 <body>
     <header>
-        <h1>Vania Halim</h1>
-        <h3>Carnegie Mellon University, Information Systems Program, Dietrich & Heinz</h3>
+        <h1>VANIA HALIM</h1>
+        <h3>Carnegie Mellon University, Information Systems Program</h3>
+
+        <div class="socials">
+            <a href="https://www.linkedin.com/in/vania-halim/" target="_blank"
+              ><img
+                src="assets/images/icons/linkedin.png"
+                alt="LinkedIn"
+                loading="lazy"
+                class="socicon"
+            /></a>
+            <a href="https://github.com/vaniahalim" target="_blank"
+              ><img
+                src="assets/images/icons/github.png"
+                alt="Github"
+                loading="lazy"
+                class="socicon"
+            /></a>
+            <a href="https://www.instagram.com/vaniacrystall/" target="_blank"
+              ><img
+                src="assets/images/icons/instagram.png"
+                alt="Instagram"
+                loading="lazy"
+                class="socicon"
+            /></a>
+            <a href="https://www.youtube.com/channel/UCC_NvPN6S_OUIr4B5WOLBUQ" target="_blank"
+              ><img
+                src="assets/images/icons/youtube.png"
+                alt="YouTube"
+                loading="lazy"
+                class="socicon"
+            /></a>
+        </div>
+
     </header>
     <nav>
-        <a href="index.html">About Me</a>
-        <a href="experience.html">My Experience</a>
-        <a href="contact.html">Contact Info</a>
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <ul class = "navigation">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="experience.html" class="nav-link">Experiences</a>
+            <a href="projects.html" class="nav-link">Projects</a>
+            <a href="contact.html" class="nav-link">Contact Me</a>
+          </ul>
+            <button class="burger-menu" id="burger-menu">
+          <ion-icon class="bars" name="menu-outline"></ion-icon>
+        </button>
     </nav>
-    <div id="content">
-        <h3>About Me</h3>
-        <img src="images/headshot.jpg" alt="Vania's Photo" width="400" height="270">
-        <div id="bio">
-            <p>Hello! I'm a freshman at CMU studying Information Systems. 
-                I am interested in the intersections of technology and humanity 
-                and hope to apply technology to solve real-world challenges.</p>
 
-    
+    <div id="content">
+        <section class="hero" id="about">
+            <img src="assets/images/headshot.jpg" alt="Vania's Photo" width="400" height="270" loading="lazy" class="hero-img">
+            <div class="bio animate__animated animate__shakeX">
+              <h3 class="bio-title">About Me</h3>
+              <p class="bio-text">
+                Hello! I'm a freshman at CMU studying Information Systems. 
+                I am interested in the intersections of technology and humanity 
+                and hope to apply technology to solve real-world challenges.<br><br>
+                <a href="resume.pdf" target="_blank"><strong><italics>View My Resume</italics></strong></a>
+              </p>
+            </div>
+        </section>
+      
+        <div id="bio">
             <h4>Courses Taken</h4>
             <ul>
                 <li>15-150 Principles of Functional Programming</li>
@@ -40,10 +101,20 @@
                 <li>85-102 Introduction to Psychology</li>
                 <li>66-129 Unreality - Immersive and Spatial Media</li>
             </ul>
-
-            <a href="resume.pdf" target="_blank"><strong>My Resume</strong></a>
         </div>
     </div>
+
+    <!-- scripts -->
+    <script src="assets/js/app.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+
     <footer>
         <hr>
         &copy; Vania Halim 2022<br>

@@ -3,57 +3,129 @@
 <head>
     <meta charset="utf-8" />
     <meta name="author" content="Vania">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="keywords" content="Carnegie Mellon University, Information Systems">
     <meta name="description" content="Vania's professional website">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vania's Professional Website</title>
+
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="assets/icons/favicon-32x32.png"
+    /> -->
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+
 </head>
 <body>
     <header>
-        <h1>Vania's Experiences</h1>
-        <h3>Carnegie Mellon University, Information Systems Program, Dietrich & Heinz</h3>
+        <h2>EXPERIENCES</h2>
+        <div class="socials">
+          <a href="https://www.linkedin.com/in/vania-halim/" target="_blank"
+            ><img
+              src="assets/images/icons/linkedin.png"
+              alt="LinkedIn"
+              loading="lazy"
+              class="socicon"
+          /></a>
+          <a href="https://github.com/vaniahalim" target="_blank"
+            ><img
+              src="assets/images/icons/github.png"
+              alt="Github"
+              loading="lazy"
+              class="socicon"
+          /></a>
+          <a href="https://www.instagram.com/vaniacrystall/" target="_blank"
+            ><img
+              src="assets/images/icons/instagram.png"
+              alt="Instagram"
+              loading="lazy"
+              class="socicon"
+          /></a>
+          <a href="https://www.youtube.com/channel/UCC_NvPN6S_OUIr4B5WOLBUQ" target="_blank"
+            ><img
+              src="assets/images/icons/youtube.png"
+              alt="YouTube"
+              loading="lazy"
+              class="socicon"
+          /></a>
+      </div>
     </header>
     <nav>
-        <a href="index.html">About Me</a>
-        <a href="experience.html">My Experience</a>
-        <a href="contact.html">Contact Info</a>
+      <ul class = "navigation">
+          <a href="index.html" class="nav-link">Home</a>
+          <a href="experience.html" class="nav-link">Experiences</a>
+          <a href="projects.html" class="nav-link">Projects</a>
+          <a href="contact.html" class="nav-link">Contact Me</a>
+      </ul>
+      <button class="burger-menu" id="burger-menu">
+          <ion-icon class="bars" name="menu-outline"></ion-icon>
+      </button>
     </nav>
-    <div id="content">
-        <h3>Experience</h3>
-        <table>
-            <caption>Projects</caption>
-            <tr>
-              <th>Title</th>
-              <th>Course</th>
-              <th>Semester</th>
-            </tr>
-            <tr>
-              <td>Case Analysis Project</td>
-              <td>67-250</td>
-              <td>S22</td>
-            </tr>
-            <tr>
-              <td>Web Development Project</td>
-              <td>67-250</td>
-              <td>S22</td>
-            </tr>
-            <tr>
-              <td>Database Project</td>
-              <td>67-250</td>
-              <td>S22</td>
-            </tr>
-            <tr>
-              <td>Term Project (La Barista)</td>
-              <td>15-112</td>
-              <td>F21</td>
-            </tr>
-            <tr>
-                <td>TartanHacks Dashboard</td>
-                <td>ScottyLabs</td>
-                <td>F21</td>
-              </tr>
-          </table>
+
+    <div class="slider-body">
+      <div class="slider">
+        <div class="slide active">
+          <img src="assets/exp/gt.png" alt="GovTech">
+          <div class="info">
+            <h2>Software Engineer Intern</h2>
+            <h3>GovTech</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="2.jpg" alt="DSTA">
+          <div class="info">
+            <h2>Defence Science Technology Agency</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="3.jpg" alt="">
+          <div class="info">
+            <h2>re:Bloom</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="4.jpg" alt="RB">
+          <div class="info">
+            <h2>re:Bloom</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="slide">
+          <img src="5.jpg" alt="RB">
+          <div class="info">
+            <h2>International Science Youth Forum</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+        <div class="slide-navigation">
+          <i class="fas fa-chevron-left prev-btn"></i>
+          <i class="fas fa-chevron-right next-btn"></i>
+        </div>
+        <div class="navigation-visibility">
+          <div class="slide-icon active"></div>
+          <div class="slide-icon"></div>
+          <div class="slide-icon"></div>
+          <div class="slide-icon"></div>
+          <div class="slide-icon"></div>
+        </div>
+      </div>
     </div>
+
+    <script src="assets/js/app.js"></script>
+
     <footer>
         <hr>
         &copy; Vania Halim 2022<br>
