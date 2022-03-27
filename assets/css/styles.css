@@ -10,8 +10,9 @@
   --normal-font: 400;
   --bold-font: 700;
   --bolder-font: 900;
-  --bg-color: rgb(255, 235, 239);
-  --primary-color: #4756df;
+  /* --bg-color: rgb(255, 235, 239); */
+  --bg-color: rgb(253, 244, 247);
+  --primary-color: #2c51a2;
   --secondary-color: deeppink;
   --primary-shadow: #8b8eaf;
   --secondary-shadow: #a17a69;
@@ -85,6 +86,13 @@ h3 {
     margin: 10px 20px;
 }
 
+h4 {
+    font-family: "Secular One";
+    font-weight: var(--bold-font);
+    margin: 20px 20px 0px;
+}
+
+
 /* navigation */
 nav ul{
     font-weight: 700;
@@ -157,13 +165,18 @@ footer {
 
 .hero img {
     padding: 0.5rem 0.5rem;
+    border-radius: 50%;
+    width:250px;
+    height:250px;
+    object-fit:cover;
+    box-shadow: 0px 2px 15px 1px var(--primary-shadow);
 }
 
 .bio {
     width: 25rem;
     padding: 0.25rem;
     border-radius: 6px;
-    box-shadow: 0px 2px 15px 2px var(--primary-shadow);
+    /* box-shadow: 0px 2px 15px 2px var(--primary-shadow); */
     background-color:rgb(254, 254, 254);
 }
 
@@ -177,6 +190,101 @@ footer {
     padding: 0.3rem;
     text-align: center;
 }
+
+/* languages table */
+
+.lang-table {
+    margin: 20px;
+    font-size: 0.9em;
+    border-color:rgb(52, 16, 119);
+    border-collapse: collapse;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    border-radius: 6px;  
+}
+
+.lang-table thead th{
+    background-color: var(--primary-color);
+    color: white;
+    text-align: left;
+}
+
+.lang-table th,
+.lang-table td {
+    padding: 1px 10px;
+    justify-content: start;
+    width: 150px;
+    text-align: left;
+}
+
+.lang-table tr:hover {
+    /* background-color:rgb(202, 235, 250); */
+    font-weight:bold;
+}
+
+.lang-table tr {
+    border-bottom: thin solid #d0cbcb;
+}
+
+.lang-table tr:nth-of-type(even) {
+    background-color: #ffffffff;
+}
+
+
+/* courses table */
+/* table tr {
+	display: table-cell;
+}
+table tr td {
+	display: block;
+} */
+
+table {
+    display: table;
+}
+
+.styled-table h4 {
+   margin: 20px;
+}
+
+.styled-table {
+    border-collapse: collapse;
+    margin: 20px;
+    font-size: 0.9em;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.styled-table thead tr {
+    background-color: deeppink ;
+    color: #ffffff;
+    text-align: center;
+    margin: 0px 0px;
+}
+
+.styled-table th,
+.styled-table td {
+    padding: 12px 12px;
+    justify-content: start;
+    max-width: 200px;
+    min-width: 100px;
+    text-align: center;
+    vertical-align: top;
+}
+
+.styled-table td:hover {background-color:white;}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+    justify-content:start;
+}
+
+/* .styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+} */
+
+/* .styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid var(--primary-color);
+} */
+
 
 /* projects */
 .projects {
@@ -403,7 +511,7 @@ object-fit: cover;
 .slider .slide .info{
 position: absolute;
 color: #222;
-background: rgba(255, 255, 255, 0.3);
+background: rgba(255, 255, 255, 0.8);
 width: 75%;
 margin-top: 50px;
 margin-left: 50px;
