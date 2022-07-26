@@ -430,9 +430,10 @@ table {
         position: fixed;
         background-color: var(--bg-color);
         flex-direction: column;
-        top: 86px;
+        top: 10%;
         left: 0%;
         width: 20%;
+        /* height: 100px; */
         text-align: center;
         transform: translateX(-120%);
         transition: transform 0.5s ease-in;
@@ -448,6 +449,13 @@ table {
         margin: 1;
     }
 
+    #burger-menu-exp {
+        display: block;
+        /* float:right; */
+        margin: 50;
+        width: 100px;
+        height:100px;
+    }
     nav ul.show {
         transform: translateX(0);
     }
