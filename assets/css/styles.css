@@ -3,18 +3,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Shrikhand:ital,wght@0,400;0,900;1,700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Secular One:ital,wght@0,400;0,900;1,700&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,400;0,700;0,800;1,700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap");
 
 /* Variables */
 :root {
-  --font-family: "Rubik", sans-serif;
+  --font-family: "Figtree", sans-serif;
   --normal-font: 400;
   --bold-font: 700;
   --bolder-font: 900;
   /* --bg-color: rgb(255, 235, 239); */
-  --bg-color: rgb(253, 244, 247);
-  --primary-color: #2c51a2;
-  --secondary-color: deeppink;
+  --bg-color: #F2E9E4;
+  --primary-color: #C9ADA7;
+  --secondary-color: #9A8C98;
   --primary-shadow: #8b8eaf;
+  --body-color: #4A4E69;
   --secondary-shadow: #a17a69;
   --box-color: rgb(238, 250, 255);
   --bottom-margin: 0.5rem;
@@ -52,7 +54,7 @@ body {
   font-family: var(--font-family);
   font-size: 100%;
   line-height: 1.7em;
-  color:rgb(24, 7, 39);
+  color: var(--body-color);
   background-color: var(--bg-color);
   margin: 1;
 }
@@ -66,7 +68,7 @@ body{
 } */
 
 h1{
-    color:deeppink;
+    color:var(--secondary-color);
     font-family: "Shrikhand";
     font-size: 3em;
     margin: 20px 20px 10px;
@@ -74,20 +76,20 @@ h1{
 
 h2 {
     font-family: "Shrikhand";
-    color:rgb(52, 16, 119);
+    color:var(--secondary-color);
     font-weight: var(--bold-font);
     font-size: 2em;
     margin: 20px 20px 10px;
 }
 
 h3 {
-    font-family: "Secular One";
+    font-family: var(--font-family);
     font-weight: var(--bold-font);
     margin: 10px 20px;
 }
 
 h4 {
-    font-family: "Secular One";
+    font-family: var(--font-family);
     font-weight: var(--bold-font);
     margin: 20px 20px 0px;
 }
@@ -254,7 +256,7 @@ table {
 }
 
 .styled-table thead tr {
-    background-color: deeppink ;
+    background-color: var(--primary-color) ;
     color: #ffffff;
     text-align: center;
     margin: 0px 0px;
@@ -262,7 +264,7 @@ table {
 
 .styled-table th,
 .styled-table td {
-    padding: 12px 12px;
+    padding: 7px 7px;
     justify-content: start;
     max-width: 200px;
     min-width: 100px;
@@ -408,7 +410,7 @@ table {
     padding: 5px;
     margin: 10px 0;
     background-color: #fff;
-    color:rgb(52, 16, 119);
+    color:var(--secondary-color);;
     font-style:italic;
     border: 2px solid var(--primary-color);
     border-radius: 5px;
@@ -489,9 +491,9 @@ padding: 0;
 .slider{
 position: relative;
 background: #000116;
-width: 800px;
-min-height: 500px;
-margin: 0px 20px;
+width: 900px;
+min-height: 600px;
+margin: 0px 0px;
 padding: 0px;
 overflow: hidden;
 border-radius: 10px;
@@ -518,24 +520,25 @@ object-fit: cover;
 
 .slider .slide .info{
 position: absolute;
-color: #222;
-background: rgba(255, 255, 255, 0.8);
-width: 75%;
+color: var(--body-color);
+background: rgba(255, 255, 255, 0.85);
+width: 90%;
 margin-top: 50px;
 margin-left: 50px;
+margin-right: 50px;
 padding: 20px;
 border-radius: 5px;
 box-shadow: 0 5px 25px rgb(1 1 1 / 5%);
 }
 
 .slider .slide .info h2{
-font-size: 2em;
-font-weight: 700;
+font-size: 1.7em;
+font-weight: var(--bold-font);
 }
 
 .slider .slide .info h3{
-font-size: 1.5em;
-font-weight: 400;
+font-size: 1.3em;
+font-weight: var(--bold-font);
 }
 
 .slider .slide .info p{
@@ -544,7 +547,7 @@ font-weight: 400;
 }
 
 .slide-navigation{
-height: 500px;
+height: 550px;
 display: flex;
 align-items: center;
 justify-content: space-between;
@@ -559,7 +562,7 @@ opacity: 1;
 .prev-btn, .next-btn{
 z-index: 999;
 font-size: 2em;
-color: #222;
+color: var(--body-color);
 background: rgba(255, 255, 255, 0.8);
 padding: 10px;
 cursor: pointer;
@@ -593,7 +596,7 @@ box-shadow: 0 5px 25px rgb(1 1 1 / 20%);
 }
 
 .navigation-visibility .slide-icon.active{
-background: #4285F4;
+background: var(--primary-color);
 }
 
 @media (max-width: 900px){
