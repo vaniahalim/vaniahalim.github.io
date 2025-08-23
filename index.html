@@ -1,224 +1,1374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="author" content="Vania">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="keywords" content="Carnegie Mellon University">
-    <meta name="keywords" content="Majors: Information Systems, Artificial Intelligence">
-    <meta name="keywords" content="Minor: Business Analytics & Optimization">
-    <meta name="description" content="Vania's Portfolio">
-    <title>Vania's Portfolio</title>
-    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vania Halim - AI & Technology Strategy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #b8869c;
+            --primary-dark: #9d6e7e;
+            --primary-light: #d4b4c2;
+            --accent: #8b5a6b;
+            --bg-primary: #fdfcfc;
+            --bg-secondary: #f9f6f7;
+            --bg-card: #ffffff;
+            --text-dark: #4a3c3f;
+            --text-medium: #6b5b5e;
+            --text-light: #8a7d7f;
+            --border: #e8dde0;
+            --shadow: 0 4px 20px rgba(184, 134, 156, 0.1);
+            --shadow-hover: 0 10px 40px rgba(184, 134, 156, 0.15);
+            --gradient: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--bg-primary);
+            overflow-x: hidden;
+        }
+        
+        /* Hand-drawn SVG elements */
+        .doodle-underline {
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 12px;
+            opacity: 0.6;
+        }
+        
+        .squiggle {
+            stroke: var(--primary);
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(253, 252, 252, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            padding: 1.2rem 2rem;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 1000;
+            font-size: 2rem;
+            color: var(--primary);
+            position: relative;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M20 30c10-5 20-5 30 0s20 5 30-5' stroke='%23d4b4c2' stroke-width='0.5' fill='none'/%3E%3Cpath d='M15 50c15-8 30-3 45 2s25 8 35-2' stroke='%23d4b4c2' stroke-width='0.5' fill='none'/%3E%3Cpath d='M10 70c20-10 35 0 50 5s30 10 40-5' stroke='%23d4b4c2' stroke-width='0.5' fill='none'/%3E%3C/svg%3E") no-repeat;
+            opacity: 0.3;
+        }
+        
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+        
+        .hero-content h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero-content .subtitle {
+            font-size: 1.4rem;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .hero-content .education {
+            font-size: 1rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        .hero-content .description {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            color: var(--text-medium);
+            line-height: 1.7;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+        
+        .hero-image {
+            text-align: center;
+            position: relative;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+        
+        .hero-image img {
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: var(--shadow-hover);
+            border: 4px solid var(--bg-card);
+            transition: transform 0.4s ease;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 350px;
+            height: 350px;
+            border: 3px dashed var(--primary-light);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+        
+        .hero-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease 1s both;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        .socials {
+            display: flex;
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease 1.2s both;
+        }
+        
+        .social-link {
+            width: 50px;
+            height: 50px;
+            background: var(--bg-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--primary);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        .social-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        /* Languages Table */
+        .languages-section {
+            margin-top: 3rem;
+            animation: fadeInUp 0.8s ease 1.4s both;
+        }
+        
+        .lang-table {
+            background: var(--bg-card);
+            border-radius: 1rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+        }
+        
+        .lang-table h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .lang-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .lang-table th,
+        .lang-table td {
+            padding: 0.8rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .lang-table th {
+            background: var(--bg-secondary);
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .lang-table td {
+            color: var(--text-medium);
+        }
+        
+        /* Sections */
+        section {
+            padding: 6rem 2rem;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+        
+        .section-header h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Experience Cards */
+        .experience-grid {
+            display: grid;
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        .experience-card {
+            background: var(--bg-card);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--gradient);
+        }
+        
+        .experience-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .experience-card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .company {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .period {
+            background: var(--gradient);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .experience-description {
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+        
+        .experience-description p {
+            margin-bottom: 0.8rem;
+        }
+        
+        .experience-links a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .experience-links a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2.5rem;
+            margin-top: 4rem;
+        }
+        
+        .project-card {
+            background: var(--bg-card);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+            position: relative;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 220px;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M10 10c20 5 30-5 50 0s30-5 40 10' stroke='rgba(255,255,255,0.2)' stroke-width='1' fill='none'/%3E%3Cpath d='M5 30c25-8 35 8 55 0s25-8 35 5' stroke='rgba(255,255,255,0.2)' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+        }
+        
+        .project-content {
+            padding: 2rem;
+        }
+        
+        .project-card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-family: 'Kalam', cursive;
+        }
+        
+        .project-description {
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .project-link {
+            padding: 0.6rem 1.2rem;
+            background: var(--bg-secondary);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        
+        .project-link:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Courses Section */
+        .courses-section {
+            background: var(--bg-secondary);
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+        
+        .semester-card {
+            background: var(--bg-card);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.4s ease;
+        }
+        
+        .semester-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .semester-card h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .course-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-medium);
+            transition: color 0.3s ease;
+        }
+        
+        .course-item:last-child {
+            border-bottom: none;
+        }
+        
+        .course-item:hover {
+            color: var(--primary);
+        }
+        
+        .course-code {
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: var(--bg-primary);
+        }
+        
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-medium);
+            background: var(--bg-card);
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .contact-item a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        footer p {
+            opacity: 0.8;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes rotate {
+            from {
+                transform: translateX(-50%) rotate(0deg);
+            }
+            to {
+                transform: translateX(-50%) rotate(360deg);
+            }
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-header h2 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-image img {
+                width: 250px;
+                height: 250px;
+            }
+            
+            .hero-image::before {
+                width: 280px;
+                height: 280px;
+            }
+        }
+    </style>
 
     <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="assets/images/headshot.jpg"
+    rel="icon"
+    type="image/png"
+    sizes="32x32"
+    href="assets/images/headshot.jpg"
     />
-
-
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
-
 </head>
+
+
 <body>
-    <header>
-        <h1>VANIA HALIM</h1>
-        <h3>Carnegie Mellon University</h3>
-        <h3> Majors: Information Systems, Artificial Intelligence + Minor: Business Analytics & Optimization</h3>
-
-        <div class="socials">
-            <a href="https://www.linkedin.com/in/vania-halim/" target="_blank"
-              ><img
-                src="assets/images/icons/linkedin.png"
-                alt="LinkedIn"
-                loading="lazy"
-                class="socicon"
-            /></a>
-            <a href="https://github.com/vaniahalim" target="_blank"
-              ><img
-                src="assets/images/icons/github.png"
-                alt="Github"
-                loading="lazy"
-                class="socicon"
-            /></a>
-            <a href="https://www.instagram.com/vaniacrystall/" target="_blank"
-              ><img
-                src="assets/images/icons/instagram.png"
-                alt="Instagram"
-                loading="lazy"
-                class="socicon"
-            /></a>
-            <a href="https://www.youtube.com/channel/UCC_NvPN6S_OUIr4B5WOLBUQ" target="_blank"
-              ><img
-                src="assets/images/icons/youtube.png"
-                alt="YouTube"
-                loading="lazy"
-                class="socicon"
-            /></a>
-        </div>
-
-    </header>
+    <!-- Navigation -->
     <nav>
-        <ul class = "navigation">
-            <a href="index.html" class="nav-link">Home</a>
-            <a href="experience.html" class="nav-link">Experiences</a>
-            <a href="projects.html" class="nav-link">Projects</a>
-            <a href="contact.html" class="nav-link">Contact Me</a>
-          </ul>
-            <button class="burger-menu" id="burger-menu">
-          <ion-icon class="bars" name="menu-outline"></ion-icon>
-        </button>
+        <div class="nav-container">
+            <div class="logo">Vania Halim</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <div id="content">
-        <section class="hero" id="about">
-            <img src="assets/images/headshot.jpg" alt="Vania's Photo" width="400" height="270" loading="lazy" class="hero-img">
-            <div class="bio">
-              <h3 class="bio-title">About Me</h3>
-              <p class="bio-text">
-                Hello! I'm a CMU student studying Information Systems and Artificial Intelligence, with a minor in Business Analytics & Optimization. 
-                I am passionate in the intersections of technology and humanity 
-                and envision applying technology to solve humanistic challenges.<br><br>
-                <a href="resume.pdf" target="_blank"><strong><italics>View My Resume</italics></strong></a>
-              </p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>Vania Halim</h1>
+                <div class="subtitle">AI & Technology Strategy</div>
+                <div class="education">
+                    <strong>Carnegie Mellon University</strong><br>
+                    Information Systems • Artificial Intelligence<br>
+                    <em>Minor: Business Analytics & Optimization</em>
+                </div>
+                <div class="education">
+                    <strong>ETH Zurich</strong><br>
+                    Computer Science • Science, Technology, Policy<br>
+                </div>
+                <p class="description">
+                    Exploring the frontiers of AI, business, and policy - building pathways from innovation to impact.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#experience" class="btn btn-primary">View Experience</a>
+                    <a href="resume.pdf" target="_blank" class="btn btn-secondary">View Resume</a>
+                </div>
+                <div class="socials">
+                    <a href="https://www.linkedin.com/in/vania-halim/" target="_blank" class="social-link">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                    <a href="https://github.com/vaniahalim" target="_blank" class="social-link">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCC_NvPN6S_OUIr4B5WOLBUQ" target="_blank" class="social-link">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                        </svg>
+                    </a>
+                </div>
             </div>
-            <div id="table">
-              <table class="lang-table">
-                <thead>
-                  <th>Languages</th>
-                  <th>Level</th>
-                </thead>
-                <tr>
-                  <td>English</td>
-                  <td>Native</td>
-                </tr>
-                <tr>
-                  <td>Indonesian</td>
-                  <td>Native</td>
-                </tr>
-                <tr>
-                  <td>Mandarin</td>
-                  <td>Proficient</td>
-                </tr>
-                <tr>
-                  <td>French</td>
-                  <td>Intermediate</td>
-                </tr>
-              </table>
+            <div class="hero-image">
+                <img src="assets/images/headshot.jpg" alt="Vania Halim" onerror="this.style.display='none'">
+                <div class="languages-section">
+                    <!-- <div class="lang-table">
+                        <h3>Languages</h3>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Language</th>
+                                    <th>Level</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>English</td>
+                                    <td>Native</td>
+                                </tr>
+                                <tr>
+                                    <td>Indonesian</td>
+                                    <td>Native</td>
+                                </tr>
+                                <tr>
+                                    <td>Mandarin</td>
+                                    <td>Proficient</td>
+                                </tr>
+                                <tr>
+                                    <td>French</td>
+                                    <td>Intermediate</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div> -->
+                </div>
             </div>
-        </section>
-      
-        <div id="table">
-          <table class="styled-table">
-            <h4>Courses Taken</h4>
-            <thead>
-              <th>Fall 24</th>
-            </thead>
-              <tr>
-                <td><strong>15-482</strong> Autonomous Agents</td>
-                <td><strong>11-441</strong> Machine Learning with Graphs</td>
-                <td><strong>10-315</strong> Introduction to Machine Learning</td>
-                <td><strong>05-318</strong> Human AI Interaction</td>
-                <td><strong>94-816</strong> Generative AI: Applications, Implications, and Governance</td>
-              </tr>
-            <thead>
-              <th>Spring 24</th>
-            </thead>
-              <tr>
-                <td><strong>11-442</strong> Search Engines</td>
-                <td><strong>67-373</strong> Information Systems Consulting Project</td>
-                <td><strong>36-401</strong> Modern Regression</td>
-                <td><strong>17-200</strong> Ethics and Policy Issues in Computing</td>
-                <td><strong>94-491</strong> Lean Innovation Lab</td>
-              </tr>
-            <thead>
-              <th>Fall 23</th>
-            </thead>
-              <tr>
-                <td><strong>15-213</strong> Introduction to Computer Systems</td>
-                <td><strong>17-313</strong> Foundations of Software Engineering</td>
-                <td><strong>36-218</strong> Probability Theory for Computer Scientists</td>
-                <td><strong>70-208</strong> Regression Analysis</td>
-                <td><strong>85-211</strong> Cognitive Psychology</td>
-              </tr>
-            <thead>
-              <th>Spring 23</th>
-            </thead>
-              <tr>
-                <td><strong>67-272</strong> Application Design and Development</td>
-                <td><strong>15-251</strong> Great Theoretical Ideas in Computer Science</td>
-                <td><strong>70-257</strong> Optimization for Business</td>
-                <td><strong>76-219</strong> Law and Blame</td>
-                <td><strong>82-273</strong> Introduction to Japanese Language and Culture</td>
-                <td><strong>82-283</strong> Language Diversity and Culture</td>
-              </tr>
-            <thead>
-              <th>Fall 22</th>
-            </thead>
-              <tr>
-                <td><strong>15-210</strong> Parallel and Sequential Data Structures and Algorithms</td>
-                <td><strong>15-281</strong> Artificial Intelligence Representation and Solving</td>
-                <td><strong>67-262</strong> Database Design and Development</td>
-                <td><strong>05-391</strong> Designing Human Centered Software</td>
-                <td><strong>70-350</strong> Acting for Business</td>
-              </tr>
-            <thead>
-              <th>Summer 22</th>
-            </thead>
-              <tr>
-                <td><strong>21-241</strong> Matrices and Linear Transformation</td>
-                <td><strong>21-259</strong> Calculus in Three Dimensions</td>
-              </tr>
-            <thead>
-              <th>Spring 22</th>
-            </thead>
-              <tr>
-                <td><strong>15-150</strong> Principles of Functional Programming</td>
-                <td><strong>15-122</strong> Principles of Imperative Computation</td>
-                <td><strong>67-250</strong> Information Systems Millieux</td>
-                <td><strong>70-122</strong> Introduction to Accounting</td>
-                <td><strong>66-129</strong> Unreality - Immersive and Spatial Media</td>
-                <td><strong>76-107</strong> Writing about Data</td>
-                <td><strong>76-108</strong> Writing about Public Problems</td>
-              </tr>
-            <thead>
-              <th>Fall 21</th>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>15-112</strong> Introduction to Programming and Computer Science</td>
-                <td><strong>21-127</strong> Concepts of Mathematics</td>
-                <td><strong>36-200</strong> Reasoning about Data</td>
-                <td><strong>80-101</strong> Dangerous Ideas in Science and Society</td>
-                <td><strong>85-102</strong> Introduction to Psychology</td>
-              </tr>
-            </tbody>
-           
-
-          </table>
         </div>
-    </div>
+    </section>
 
-    <!-- scripts -->
-    <script src="assets/js/app.js"></script>
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <p>Building technology solutions that bridge AI, systems, and people to create lasting impact.</p>
+            </div>
+            
+            <div class="experience-grid">
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Tech Consultant & Software Developer</h3>
+                            <div class="company">Center for Organ Recovery & Education</div>
+                        </div>
+                        <div class="period">2024</div>
+                    </div>
+                    <ul>
+                        <li>Spearheaded the development of a full web-based application and SQL database to streamline employee onboarding.</li>
+                        <li>Engineered API integrations that significantly accelerated the hospital document signing process.</li>
+                        <li>Automated provisioning for Active Directory and other web-based accounts using PowerShell and Selenium.</li>
+                        <li>Oversaw the complete project lifecycle—from stakeholder consultation to successful User Acceptance Testing (UAT).</li>
+                        <li>Authored detailed documentation to ensure smooth replication and long-term maintenance by the IT team.</li>
+                      </ul>
+                </div>
 
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Chief Marketing Officer</h3>
+                            <div class="company">Capital Grains</div>
+                        </div>
+                        <div class="period">2023</div>
+                    </div>
+                    <ul>
+                        <li>Led marketing strategies for CMU's inaugural student-run restaurant venture, branding it with impactful outreach.</li>
+                        <li>Elevated social media engagement by a striking <strong>300%</strong>, fostering strong customer loyalty and brand awareness.</li>
+                        <li>Orchestrated on-the-ground campaigns and collaborated directly with Compass Group, Europe’s largest food-service provider.</li>
+                      </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Data Engineer Intern</h3>
+                            <div class="company">Infocomm Media Development Authority (IMDA)</div>
+                        </div>
+                        <div class="period">2024</div>
+                    </div>
+                    <ul>
+                        <li>Designed and implemented robust data structures to harmonize diverse jobs and skills datasets.</li>
+                        <li>Enhanced the development of data-informed policy reviews and targeted interventions.</li>
+                        <li>Built a dynamic dashboard to visualize Singapore’s tech jobs and skills landscape via Python and web-scraping.</li>
+                        <li>Explored applications of Generative AI to support local businesses.</li>
+                        <li>Actively supported policy workflows as Assistant to the Assistant Chief Executive.</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>15-112 TA (CS Fundamentals)</h3>
+                            <div class="company">Carnegie Mellon University</div>
+                        </div>
+                        <div class="period">2023-2024</div>
+                    </div>
+                    <ul>
+                        <li>Led weekly recitation sections for 40 students, covering core programming concepts from data types to advanced recursion and algorithms.</li>
+                        <li>Delivered large-group lectures for over 100 students during quiz prep and solution sessions.</li>
+                        <li>Directed small group learning teams, crafting targeted materials and offering one-on-one mentoring for struggling students.</li>
+                        <li>Guided 10 students to build their own complex games—each over 800 lines of code—featuring 3D graphics, OpenCV integrations, search algorithms, and more.</li>
+                      </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Data Scientist Intern</h3>
+                            <div class="company">Esme Learning</div>
+                        </div>
+                        <div class="period">2023</div>
+                    </div>
+                    <ul>
+                        <li>Built a personalized text-analysis model using advanced machine learning techniques.</li>
+                        <li>Developed data-driven visualizations to support product development teams with actionable insights.</li>
+                      </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Software Engineer Intern</h3>
+                            <div class="company">GovTech Singapore</div>
+                        </div>
+                        <div class="period">2022</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Automated detection of cybersecurity threats by scanning logs for Indicators of Compromise (IP addresses, file hashes, URLs) using AWS Lambda, DynamoDB, and Elasticsearch.</li>
+                            <li>Developed and embedded a process for secure monetary disbursement to citizens, leveraging API integrations and the Serverless framework.</li>
+                          </ul>
+                        <p></p>
+                        <div class="experience-links">
+                            <a href="assets/exp/ioc.mov" target="_blank">Video Demo of IOC scanners</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Data Scientist Intern</h3>
+                            <div class="company">Defence Science Technology Agency</div>
+                        </div>
+                        <div class="period">2022</div>
+                    </div>
+                    <div class="experience-description">
+                        <ul>
+                            <li>Applied feature-engineering and machine learning methods on intermittent, multivariate time-series data.</li>
+                            <li>Forecasted material demand by clustering similar consumption patterns and analyzing procurement associations.</li>
+                            <li>Communicated data-driven insights through compelling dashboards for strategic stakeholders.</li>
+                          </ul>
+                        <p></p>
+                        <div class="experience-links">
+                            <a href="assets/exp/DSTA project presentation.pdf" target="_blank">Final Presentation</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Project Manager and Tech Consultant</h3>
+                            <div class="company">re:Bloom</div>
+                        </div>
+                        <div class="period">2022</div>
+                    </div>
+                    <ul>
+                        <li>Led a team in building an e-commerce platform for TamikaNicole Hair to Help.</li>
+                        <li>Designed and implemented a sales-boosting web application using Figma and Wix for Imprinted by Jessii, a local, women- and minority-owned art business.</li>
+                      </ul>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Coding Instructor</h3>
+                            <div class="company">Code in the Community</div>
+                        </div>
+                        <div class="period">2021-2022</div>
+                    </div>
+                    <div class="experience-description">
+                        <p>Taught children from underprivileged backgrounds how to code in Scratch and Python. Taught fundamental coding concepts, its applications and guided them through a personal coding project.</p>
+                        <div class="experience-links">
+                            <a href="https://sghwachong.wixsite.com/mysite" target="_blank">Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Organizer</h3>
+                            <div class="company">International Science Youth Forum</div>
+                        </div>
+                        <div class="period">2020-2021</div>
+                    </div>
+                    <div class="experience-description">
+                        <p>Created event website, handled social media platforms, took on photography duties. Led delegates to build their vision of the future of transportation, engaged with Nobel Laureates like Sir Tim Hunt, hosted eminent scientists, coordinated research sharing by delegates, and carried out activities and tours to labs for international delegates.</p>
+                        <div class="experience-links">
+                            <a href="https://sghwachong.wixsite.com/mysite" target="_blank">Website</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-card">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Organizer</h3>
+                            <div class="company">Asia Pacific Young Leaders' Summit</div>
+                        </div>
+                        <div class="period">2020</div>
+                    </div>
+                    <div class="experience-description">
+                        <p>Facilitated group discussion and public outreach regarding the Fourth Industrial Revolution, led excursions to engineering labs and industries, conversed with the President of Singapore, and helped delegates embark on a social project in their home countries.</p>
+                        <div class="experience-links">
+                            <a href="https://sghwachong.wixsite.com/mysite" target="_blank">Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" style="background: var(--bg-secondary);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Projects</h2>
+                <p>Mergning technical innovation with purpose—designed to educate, empower, and create real-world impact.</p>
+            </div>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img
+                        src="assets/presentation/asl.png"
+                        alt="signSpeak"
+                        loading="lazy"
+                        class="project-pic"
+                        />
+                    </div>
+                    <div class="project-content">
+                        <h3>signSpeak</h3>
+                        <p class="project-description">
+                            Translated American Sign Language (ASL) to text and speech through Computer Vision. Conceptualized during CMU's Hack112 (hackathon). Won Social Good Category prize!
+                        </p>
+                        <div class="project-links">
+                            <a href="https://youtu.be/e7JpYViUqVc" target="_blank" class="project-link">Demo Video</a>
+                            <a href="https://github.com/vaniahalim/hack112" target="_blank" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img
+                        src="assets/presentation/safet.png"
+                        alt="safet"
+                        loading="lazy"
+                        class="project-pic"
+                        />
+                    </div>
+                    <div class="project-content">
+                        <h3>SafeT</h3>
+                        <p class="project-description">
+                            Created a fashionable wearable technology that can signal for help. 3D printed prototype, connected using Arduino. Conceptualized during CMU's TartanHacks (hackathon). Placed Top 5!
+                        </p>
+                        <div class="project-links">
+                            <a href="assets/presentation/safet.pdf" target="_blank" class="project-link">Slide Deck</a>
+                            <a href="assets/presentation/safet.mov" target="_blank" class="project-link">Video</a>
+                            <a href="https://github.com/vaniahalim/tartanhacks2022-weirdoughs" target="_blank" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img
+                        src="assets/presentation/lb.png"
+                        alt="labarista"
+                        loading="lazy"
+                        class="project-pic"
+                        />
+                    </div>
+                    <div class="project-content">
+                        <h3>La Barista</h3>
+                        <p class="project-description">
+                            Developed a Python-based cafe game with OpenCV, A*star pathfinding and Tkinter.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://youtu.be/bOJUl3a9Ueo" target="_blank" class="project-link">Demo Video</a>
+                            <a href="https://github.com/vaniahalim/15112-TP" target="_blank" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <img
+                        src="assets/presentation/sfm.png"
+                        alt="sfm"
+                        loading="lazy"
+                        class="project-pic"
+                      /></div>
+                    <div class="project-content">
+                        <h3>Stock Pitch</h3>
+                        <p class="project-description">
+                            Stock Pitch for NASDAQ:SFM Sprouts' Farmers Market. Competed in Smart Women Securities' Stock Pitch Competition.
+                        </p>
+                        <div class="project-links">
+                            <a href="assets/presentation/sfm.pdf" target="_blank" class="project-link">Slide Deck</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image"><img
+                        src="assets/presentation/tartanhacks.png"
+                        alt="scottylabs"
+                        loading="lazy"
+                        class="project-pic"
+                        height=200px
+                        width=200px
+                      /></div>
+                    <div class="project-content">
+                        <h3>TartanHacks Front-end Development</h3>
+                        <p class="project-description">
+                            Collaborated on a mobile and web application for Tartanhacks, CMU's largest hackathon. Application used throughout the event by participants, admins, and sponsors for various activities. Implemented front-end for Sponsors page.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://github.com/ScottyLabs/tartanhacks_dashboard_v2" target="_blank" class="project-link">GitHub</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image"><img
+                        src="assets/presentation/ar.png"
+                        alt="scottylabs"
+                        loading="lazy"
+                        class="project-pic"
+                        height=200px
+                        width=200px
+                      /></div>
+                    <div class="project-content">
+                        <h3>Augmented Reality Navigation Application</h3>
+                        <p class="project-description">
+                            Developed a mobile application for my high school on Unity, integrating Global Positioning System and Simultaneous Localization and Mapping for precise in-campus tracking and navigation. Incorporated Augmented Reality elements using the ARCore SDK and route generation using Mapbox. Won Bronze at the Singapore Science and Engineering Forum.
+                        </p>
+                        <div class="project-links">
+                            <a href="assets/presentation/poster.pdf" target="_blank" class="project-link">Poster</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image"><img
+                        src="assets/presentation/codelaunchers.png"
+                        alt="codelaunchers"
+                        loading="lazy"
+                        class="project-pic"
+                        height=200px
+                        width=200px
+                      /></div>
+                    <div class="project-content">
+                        <h3>Code Launchers</h3>
+                        <p class="project-description">
+                            Founded a webpage to encourage children (or adults) in my community to kickstart their coding journey. Compiled coding resources and inspiration.
+                        </p>
+                        <div class="project-links">
+                            <a href="https://learncodingtoday.wixsite.com/codelaunchers" target="_blank" class="project-link">Website</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Academic Journey</h2>
+                <p>Comprehensive coursework spanning AI, information systems, and interdisciplinary studies</p>
+            </div>
+            
+            <div class="courses-grid">
+                <div class="semester-card">
+                    <h3>Fall 2024</h3>
+                    <div class="course-item"><span class="course-code">15-482</span> Autonomous Agents</div>
+                    <div class="course-item"><span class="course-code">11-441</span> Machine Learning with Graphs</div>
+                    <div class="course-item"><span class="course-code">10-315</span> Introduction to Machine Learning</div>
+                    <div class="course-item"><span class="course-code">05-318</span> Human AI Interaction</div>
+                    <div class="course-item"><span class="course-code">94-816</span> Generative AI: Applications, Implications, and Governance</div>
+                </div>
+
+                <div class="semester-card">
+                    <h3>Spring 2024</h3>
+                    <div class="course-item"><span class="course-code">11-442</span> Search Engines</div>
+                    <div class="course-item"><span class="course-code">67-373</span> Information Systems Consulting Project</div>
+                    <div class="course-item"><span class="course-code">36-401</span> Modern Regression</div>
+                    <div class="course-item"><span class="course-code">17-200</span> Ethics and Policy Issues in Computing</div>
+                    <div class="course-item"><span class="course-code">94-491</span> Lean Innovation Lab</div>
+                </div>
+
+                <div class="semester-card">
+                    <h3>Fall 2023</h3>
+                    <div class="course-item"><span class="course-code">15-213</span> Introduction to Computer Systems</div>
+                    <div class="course-item"><span class="course-code">17-313</span> Foundations of Software Engineering</div>
+                    <div class="course-item"><span class="course-code">36-218</span> Probability Theory for Computer Scientists</div>
+                    <div class="course-item"><span class="course-code">70-208</span> Regression Analysis</div>
+                    <div class="course-item"><span class="course-code">85-211</span> Cognitive Psychology</div>
+                </div>
+
+                <div class="semester-card">
+                    <h3>Spring 2023</h3>
+                    <div class="course-item"><span class="course-code">67-272</span> Application Design and Development</div>
+                    <div class="course-item"><span class="course-code">15-251</span> Great Theoretical Ideas in Computer Science</div>
+                    <div class="course-item"><span class="course-code">70-257</span> Optimization for Business</div>
+                    <div class="course-item"><span class="course-code">76-219</span> Law and Blame</div>
+                    <div class="course-item"><span class="course-code">82-273</span> Introduction to Japanese Language and Culture</div>
+                    <div class="course-item"><span class="course-code">82-283</span> Language Diversity and Culture</div>
+                </div>
+
+                <div class="semester-card">
+                    <h3>Fall 2022</h3>
+                    <div class="course-item"><span class="course-code">15-210</span> Parallel and Sequential Data Structures and Algorithms</div>
+                    <div class="course-item"><span class="course-code">15-281</span> Artificial Intelligence Representation and Solving</div>
+                    <div class="course-item"><span class="course-code">67-262</span> Database Design and Development</div>
+                    <div class="course-item"><span class="course-code">05-391</span> Designing Human Centered Software</div>
+                    <div class="course-item"><span class="course-code">70-350</span> Acting for Business</div>
+                </div>
+
+                <div class="semester-card">
+                    <h3>Summer 2022</h3>
+                    <div class="course-item"><span class="course-code">21-241</span> Matrices and Linear Transformation</div>
+                    <div class="course-item"><span class="course-code">21-259</span> Calculus in Three Dimensions</div>
+                </div>
+
+                <div class="semester-card">
+                    <h3>Spring 2022</h3>
+                    <div class="course-item"><span class="course-code">15-150</span> Principles of Functional Programming</div>
+                    <div class="course-item"><span class="course-code">15-122</span> Principles of Imperative Computation</div>
+                    <div class="course-item"><span class="course-code">67-250</span> Information Systems Millieux</div>
+                    <div class="course-item"><span class="course-code">70-122</span> Introduction to Accounting</div>
+                    <div class="course-item"><span class="course-code">66-129</span> Unreality - Immersive and Spatial Media</div>
+                    <div class="course-item"><span class="course-code">76-107</span> Writing about Data</div>
+                    <div class="course-item"><span class="course-code">76-108</span> Writing about Public Problems</div>
+                </div>
+
+                <div class="semester-card">
+                    <h3>Fall 2021</h3>
+                    <div class="course-item"><span class="course-code">15-112</span> Introduction to Programming and Computer Science</div>
+                    <div class="course-item"><span class="course-code">21-127</span> Concepts of Mathematics</div>
+                    <div class="course-item"><span class="course-code">36-200</span> Reasoning about Data</div>
+                    <div class="course-item"><span class="course-code">80-101</span> Dangerous Ideas in Science and Society</div>
+                    <div class="course-item"><span class="course-code">85-102</span> Introduction to Psychology</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Let's Connect</h2>
+                <p>Interested in AI, technology strategy, or just want to chat over coffee? I'd love to hear from you.</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <a href="mailto:vanialim12@gmail.com">vanialim12@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <span>Zurich, Switzerland</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <hr>
-        &copy; Vania Halim 2024<br>
+        <p>&copy; 2024 Vania Crystal Halim. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(253, 252, 252, 0.98)';
+                nav.style.boxShadow = '0 4px 20px rgba(184, 134, 156, 0.15)';
+            } else {
+                nav.style.background = 'rgba(253, 252, 252, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and animate them
+        document.querySelectorAll('.experience-card, .project-card, .semester-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Add some playful interactions
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                const emoji = this.querySelector('.project-image');
+                emoji.style.transform = 'scale(1.1) rotate(5deg)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                const emoji = this.querySelector('.project-image');
+                emoji.style.transform = 'scale(1) rotate(0deg)';
+            });
+        });
+
+        // Add gentle floating animation to hero image
+        const heroImage = document.querySelector('.hero-image img');
+        if (heroImage) {
+            setInterval(() => {
+                heroImage.style.transform = heroImage.style.transform === 'translateY(-10px)' 
+                    ? 'translateY(0px)' 
+                    : 'translateY(-10px)';
+            }, 3000);
+        }
+    </script>
 </body>
 </html>
