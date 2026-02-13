@@ -7,18 +7,17 @@
 
 /* Variables */
 :root {
-  --font-family: "Figtree", sans-serif;
+  --font-family: "Figtree", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --normal-font: 400;
   --bold-font: 700;
   --bolder-font: 900;
-  /* --bg-color: rgb(255, 235, 239); */
-  --bg-color: #F2E9E4;
-  --primary-color: #C9ADA7;
-  --secondary-color: #9A8C98;
-  --primary-shadow: #8b8eaf;
-  --body-color: #4A4E69;
-  --secondary-shadow: #a17a69;
-  --box-color: rgb(238, 250, 255);
+  --bg-color: #f9f5f0;
+  --primary-color: #b98a6f;
+  --secondary-color: #4a3a3a;
+  --primary-shadow: rgba(25, 18, 12, 0.2);
+  --body-color: #2f2630;
+  --secondary-shadow: rgba(25, 18, 12, 0.16);
+  --box-color: #ffffff;
   --bottom-margin: 0.5rem;
   --bottom-margin-2: 1rem;
   --line-height: 1.7rem;
@@ -32,7 +31,7 @@ html {
 
 /* CSS Resets */
 * {
-  margin: 1;
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
@@ -55,8 +54,10 @@ body {
   font-size: 100%;
   line-height: 1.7em;
   color: var(--body-color);
-  background-color: var(--bg-color);
-  margin: 1;
+  background:
+    radial-gradient(circle at top left, rgba(228, 200, 181, 0.26), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(149, 104, 83, 0.12), transparent 55%),
+    var(--bg-color);
 }
 
 /* 
@@ -69,17 +70,22 @@ body{
 
 h1{
     color:var(--secondary-color);
-    font-family: "Shrikhand";
-    font-size: 3em;
-    margin: 20px 20px 10px;
+    font-family: "Figtree", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-size: 2.4em;
+    margin: 24px 20px 12px;
 }
 
 h2 {
-    font-family: "Shrikhand";
+    font-family: "Figtree", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
     color:var(--secondary-color);
-    font-weight: var(--bold-font);
+    font-weight: 600;
     font-size: 2em;
-    margin: 20px 20px 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 22px 20px 10px;
 }
 
 h3 {
@@ -105,18 +111,22 @@ nav ul{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding: 0.7rem 1rem;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-    background-color: rgb(254, 254, 254);
+    padding: 0.8rem 1.4rem;
+    box-shadow: 0 16px 40px rgba(25, 18, 12, 0.16);
+    background-color: rgba(252, 249, 245, 0.98);
+    border-radius: 999px;
 }
 
 nav a {
     color: var(--primary-color);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 0.8rem;
     transition: var(--transition);
 }
 nav a:hover {
     color: var(--secondary-color);
-    border-bottom: 2px solid var(--secondary-color);
+    border-bottom: 2px solid transparent;
 }
 
 nav ul {
@@ -162,7 +172,8 @@ footer {
     justify-content: center;
     gap: 2.5rem;
     max-width: 68.75rem;
-    margin: auto;
+    margin: 2.5rem auto 0;
+    padding: 1rem 1.25rem 2.5rem;
 }
 
 .hero img {
@@ -171,15 +182,15 @@ footer {
     width:250px;
     height:250px;
     object-fit:cover;
-    box-shadow: 0px 2px 15px 1px var(--primary-shadow);
+    box-shadow: 0 26px 55px rgba(25, 18, 12, 0.26);
 }
 
 .bio {
     width: 25rem;
     padding: 0.25rem;
     border-radius: 6px;
-    /* box-shadow: 0px 2px 15px 2px var(--primary-shadow); */
-    background-color:rgb(254, 254, 254);
+    background-color:rgba(255, 255, 255, 0.96);
+    box-shadow: 0 18px 45px rgba(25, 18, 12, 0.18);
 }
 
 .bio h3 {
