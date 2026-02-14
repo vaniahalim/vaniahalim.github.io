@@ -426,79 +426,233 @@
             line-height: 1.7;
         }
         
-        /* Experience Cards */
-        .experience-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-        }
-        
-        .experience-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 20px;
-            padding: 2.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Experience Timeline */
+        .experience-section {
             position: relative;
             overflow: hidden;
         }
         
-        .experience-card::before {
+        .timeline-scroll-hint {
+            text-align: center;
+            color: var(--text-tertiary);
+            font-size: 0.875rem;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            animation: pulse-hint 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-hint {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .experience-timeline-wrapper {
+            position: relative;
+            padding: 4rem 0;
+        }
+        
+        /* Timeline line */
+        .experience-timeline-wrapper::before {
             content: '';
             position: absolute;
-            top: 0;
+            top: 3rem;
             left: 0;
             right: 0;
-            height: 3px;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                var(--accent) 0%, 
+                var(--accent-purple) 50%, 
+                var(--accent-cyan) 100%);
+            z-index: 0;
+            opacity: 0.4;
+        }
+        
+        .experience-grid {
+            display: flex;
+            gap: 4rem;
+            padding: 0;
+            overflow-x: auto;
+            overflow-y: hidden;
+            scroll-snap-type: x proximity;
+            scroll-behavior: smooth;
+            position: relative;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 2rem;
+        }
+        
+        /* Custom scrollbar */
+        .experience-grid::-webkit-scrollbar {
+            height: 8px;
+        }
+        
+        .experience-grid::-webkit-scrollbar-track {
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 10px;
+        }
+        
+        .experience-grid::-webkit-scrollbar-thumb {
             background: var(--gradient-holo);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            border-radius: 10px;
+        }
+        
+        .experience-grid::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(90deg, #7c7ff1, #b865f9);
+        }
+        
+        /* Timeline item wrapper */
+        .timeline-item {
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            will-change: transform;
+        }
+        
+        .timeline-item:first-child {
+            margin-left: 2rem;
+        }
+        
+        .timeline-item:last-child {
+            margin-right: 2rem;
+        }
+        
+        /* Year label above timeline */
+        .timeline-year {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 0.05em;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+        }
+        
+        .timeline-year::after {
+            content: '';
+            position: absolute;
+            bottom: -2.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--gradient-holo);
+            border: 3px solid var(--bg-dark);
+            border-radius: 50%;
+            z-index: 3;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.6);
+        }
+        
+        /* Most recent year - emphasized */
+        .timeline-item:first-child .timeline-year {
+            font-size: 1.5rem;
+            background: var(--gradient-holo);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .timeline-item:first-child .timeline-year::after {
+            width: 18px;
+            height: 18px;
+            bottom: -2.75rem;
+            animation: pulse-dot 2s ease-in-out infinite;
+        }
+        
+        @keyframes pulse-dot {
+            0%, 100% { 
+                transform: translateX(-50%) scale(1); 
+                box-shadow: 0 0 20px rgba(99, 102, 241, 0.6); 
+            }
+            50% { 
+                transform: translateX(-50%) scale(1.3); 
+                box-shadow: 0 0 30px rgba(99, 102, 241, 1); 
+            }
+        }
+        
+        .experience-card {
+            min-width: 400px;
+            background: var(--bg-card);
+            border: 1.5px solid var(--border);
+            border-radius: 16px;
+            padding: 2rem;
+            position: relative;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Most recent card - emphasized */
+        .timeline-item:first-child .experience-card {
+            min-width: 480px;
+            border: 1.5px solid rgba(99, 102, 241, 0.4);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, var(--bg-card) 100%);
+            box-shadow: 
+                0 20px 60px rgba(99, 102, 241, 0.2),
+                0 0 40px rgba(99, 102, 241, 0.1);
+        }
+        
+        .timeline-item:first-child .experience-card::before {
+            content: 'CURRENT';
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--gradient-holo);
+            color: white;
+            padding: 0.35rem 0.875rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
         }
         
         .experience-card:hover {
-            border-color: rgba(99, 102, 241, 0.3);
-            transform: translateY(-4px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border-color: rgba(99, 102, 241, 0.6);
+            transform: translateY(-8px);
+            box-shadow: 
+                0 25px 70px rgba(99, 102, 241, 0.3),
+                0 0 50px rgba(99, 102, 241, 0.2);
         }
         
-        .experience-card:hover::before {
-            opacity: 1;
+        .timeline-item:first-child .experience-card:hover {
+            transform: translateY(-12px) scale(1.02);
         }
         
         .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 2rem;
             margin-bottom: 1.5rem;
-            flex-wrap: wrap;
         }
         
         .experience-card h3 {
             font-family: 'Space Grotesk', sans-serif;
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.375rem;
+            font-weight: 700;
             color: var(--text-primary);
             letter-spacing: -0.01em;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .timeline-item:first-child .experience-card h3 {
+            font-size: 1.625rem;
         }
         
         .company {
             color: var(--accent);
-            font-weight: 500;
-            font-size: 1rem;
-            letter-spacing: 0.01em;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
         }
         
         .period {
-            background: rgba(99, 102, 241, 0.1);
-            color: var(--accent);
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            white-space: nowrap;
-            font-family: 'DM Sans', sans-serif;
+            display: none;
         }
         
         .experience-description {
@@ -517,6 +671,7 @@
             position: relative;
             color: var(--text-secondary);
             line-height: 1.7;
+            font-size: 0.9375rem;
         }
         
         .experience-card li::before {
@@ -527,15 +682,21 @@
             font-weight: 600;
         }
         
+        .experience-links {
+            margin-top: 1rem;
+        }
+        
         .experience-links a {
             color: var(--accent);
             text-decoration: none;
-            font-weight: 500;
-            transition: opacity 0.3s ease;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border-bottom: 2px solid rgba(99, 102, 241, 0.3);
         }
         
         .experience-links a:hover {
-            opacity: 0.7;
+            color: var(--accent-purple);
+            border-bottom-color: var(--accent-purple);
         }
         
         /* Projects Grid */
@@ -763,28 +924,24 @@
                 display: none;
             }
             
-            .hero {
-                padding: 8rem 1.5rem 4rem;
+            section {
+                padding: 6rem 1.5rem;
             }
             
-            .hero-content h1 {
-                font-size: clamp(2.5rem, 10vw, 4rem);
+            .experience-card {
+                min-width: 320px;
             }
             
-            .hero-tagline {
-                font-size: clamp(1.5rem, 7vw, 2.5rem);
+            .timeline-item:first-child .experience-card {
+                min-width: 360px;
             }
             
-            .hero-content .description {
-                font-size: 1.125rem;
+            .timeline-year {
+                font-size: 1rem;
             }
             
-            .cta-buttons {
-                justify-content: center;
-            }
-            
-            .socials {
-                justify-content: center;
+            .experience-grid {
+                gap: 2rem;
             }
         }
         
@@ -834,146 +991,226 @@
     </nav>
 
     <!-- Experience Section -->
-    <section id="experience">
+    <section id="experience" class="experience-section">
         <div class="container">
             <div class="section-header">
-                <h2>Experience</h2>
-                <p>Building technology solutions that bridge AI, systems, and people to create lasting impact.</p>
+                <h2>Experience Timeline</h2>
+                <p>A journey through innovation and impact—scroll through the timeline to explore my path.</p>
+            </div>
+            
+            <div class="timeline-scroll-hint">
+                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"/>
+                </svg>
+                Scroll horizontally to explore the timeline
             </div>
             
             <div class="experience-grid">
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Investment Analyst</h3>
-                            <div class="company">S2S Ventures</div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2026</div>
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3>Investment Analyst</h3>
+                                <div class="company">S2S Ventures</div>
+                            </div>
                         </div>
-                        <div class="period">Jan 2026 – Present</div>
-                    </div>
-                    <ul>
-                        <li>Conduct market research on early-stage tech startups, evaluating business models, competitive landscapes, and growth potential.</li>
-                        <li>Analyze financial projections and product viability across AI, fintech, and SaaS sectors to inform investment decisions.</li>
-                        <li>Support portfolio companies by connecting startups with mentors, resources, and strategic partners in the Swiss ecosystem.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>GEO AI Consultant (Freelance)</h3>
-                            <div class="company">Zurich, Switzerland</div>
-                        </div>
-                        <div class="period">Dec 2025 – Present</div>
-                    </div>
-                    <ul>
-                        <li>Develop customized Generative Engine Optimization (GEO) strategies for Zurich businesses to enhance AI search visibility (ChatGPT, Perplexity, Google AI Overviews).</li>
-                        <li>Provide comprehensive audits and low-cost monitoring for clients to track AI citations and competitor benchmarks.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Tech Consultant &amp; Software Developer</h3>
-                            <div class="company">Center for Organ Recovery &amp; Education</div>
-                        </div>
-                        <div class="period">Jan – May 2024</div>
-                    </div>
-                    <ul>
-                        <li>Streamlined the employee onboarding and offboarding pipeline by developing a full web-based application and SQL database.</li>
-                        <li>Automated the creation of Active Directory accounts with PowerShell and other web-based accounts using Selenium.</li>
-                        <li>Oversaw the entire project lifecycle from initial consultation with the client to final User Acceptance Testing.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Chief Marketing Officer</h3>
-                            <div class="company">Capital Grains</div>
-                        </div>
-                        <div class="period">May – Aug 2024</div>
-                    </div>
-                    <ul>
-                        <li>Spearheaded marketing initiatives for CMU’s first student-run restaurant startup business.</li>
-                        <li>Increased social media following by 300%, strengthening branding and customer loyalty.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Data Engineer Intern</h3>
-                            <div class="company">Infocomm Media Development Authority (IMDA)</div>
-                        </div>
-                        <div class="period">Jun – Aug 2023</div>
-                    </div>
-                    <ul>
-                        <li>Developed an automated data pipeline from data sourcing to cleaning, transformation, and visualization.</li>
-                        <li>Conducted research on Generative AI’s implications on the work landscape.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Teaching Assistant (Fundamentals of Programming &amp; Computer Science)</h3>
-                            <div class="company">Carnegie Mellon University</div>
-                        </div>
-                        <div class="period">Aug 2022 – May 2023</div>
-                    </div>
-                    <ul>
-                        <li>Head of student support division, writing extra practice content and coordinating weekly small group sessions for at-risk students.</li>
-                        <li>Mentored over 20 students in developing their own Python-based applications (800–1000+ lines of code).</li>
-                        <li>Taught large group sessions (quiz prep and solutions) for 200+ students and held weekly recitations and office hours.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Data Science Intern</h3>
-                            <div class="company">Esme Learning</div>
-                        </div>
-                        <div class="period">May – Aug 2022</div>
-                    </div>
-                    <ul>
-                        <li>Developed a text analysis model using machine learning methods.</li>
-                        <li>Implemented a machine learning flow for targeting business questions and improving internal processes.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Tech Consultant &amp; Project Manager</h3>
-                            <div class="company">re:Bloom</div>
-                        </div>
-                        <div class="period">Aug 2021 – May 2022</div>
-                    </div>
-                    <ul>
-                        <li>Planned, oversaw, and led the team’s project to completion while maintaining close communication with clients.</li>
-                    </ul>
-                </div>
-
-                <div class="experience-card">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Software Engineer Intern</h3>
-                            <div class="company">GovTech Singapore</div>
-                        </div>
-                        <div class="period">Feb – May 2021</div>
-                    </div>
-                    <div class="experience-description">
                         <ul>
-                            <li>Automated the scanning of Indicators of Compromise (IP addresses, file hashes, URLs, etc.) in infrastructure logs using AWS Lambda, DynamoDB, and ElasticSearch to identify security threats.</li>
-                            <li>Integrated the process of monetary disbursement to citizens using API calls, the Serverless framework, and other AWS services.</li>
+                            <li>Conduct market research on early-stage tech startups, evaluating business models, competitive landscapes, and growth potential.</li>
+                            <li>Analyze financial projections and product viability across AI, fintech, and SaaS sectors to inform investment decisions.</li>
+                            <li>Support portfolio companies by connecting startups with mentors, resources, and strategic partners in the Swiss ecosystem.</li>
                         </ul>
-                        <div class="experience-links">
-                            <a href="assets/exp/ioc.mov" target="_blank">Video Demo of IOC scanners</a>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2025</div>
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3>GEO AI Consultant (Freelance)</h3>
+                                <div class="company">Zurich, Switzerland</div>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Develop customized Generative Engine Optimization (GEO) strategies for Zurich businesses to enhance AI search visibility (ChatGPT, Perplexity, Google AI Overviews).</li>
+                            <li>Provide comprehensive audits and low-cost monitoring for clients to track AI citations and competitor benchmarks.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3>Tech Consultant &amp; Software Developer</h3>
+                                <div class="company">Center for Organ Recovery &amp; Education</div>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Streamlined the employee onboarding and offboarding pipeline by developing a full web-based application and SQL database.</li>
+                            <li>Automated the creation of Active Directory accounts with PowerShell and other web-based accounts using Selenium.</li>
+                            <li>Oversaw the entire project lifecycle from initial consultation with the client to final User Acceptance Testing.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2024</div>
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3>Chief Marketing Officer</h3>
+                                <div class="company">Capital Grains</div>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Spearheaded marketing initiatives for CMU’s first student-run restaurant startup business.</li>
+                            <li>Increased social media following by 300%, strengthening branding and customer loyalty.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3>Data Engineer Intern</h3>
+                                <div class="company">Infocomm Media Development Authority (IMDA)</div>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Developed an automated data pipeline from data sourcing to cleaning, transformation, and visualization.</li>
+                            <li>Conducted research on Generative AI’s implications on the work landscape.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3>Teaching Assistant</h3>
+                                <div class="company">Carnegie Mellon University</div>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Head of student support division, writing extra practice content and coordinating weekly small group sessions for at-risk students.</li>
+                            <li>Mentored over 20 students in developing their own Python-based applications (800–1000+ lines of code).</li>
+                            <li>Taught large group sessions (quiz prep and solutions) for 200+ students and held weekly recitations and office hours.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3>Data Science Intern</h3>
+                                <div class="company">Esme Learning</div>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Developed a text analysis model using machine learning methods.</li>
+                            <li>Implemented a machine learning flow for targeting business questions and improving internal processes.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3>Tech Consultant &amp; Project Manager</h3>
+                                <div class="company">re:Bloom</div>
+                            </div>
+                        </div>
+                        <ul>
+                            <li>Planned, oversaw, and led the team’s project to completion while maintaining close communication with clients.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="experience-card">
+                        <div class="experience-header">
+                            <div>
+                                <h3>Software Engineer Intern</h3>
+                                <div class="company">GovTech Singapore</div>
+                            </div>
+                        </div>
+                        <div class="experience-description">
+                            <ul>
+                                <li>Automated the scanning of Indicators of Compromise (IP addresses, file hashes, URLs, etc.) in infrastructure logs using AWS Lambda, DynamoDB, and ElasticSearch to identify security threats.</li>
+                                <li>Integrated the process of monetary disbursement to citizens using API calls, the Serverless framework, and other AWS services.</li>
+                            </ul>
+                            <div class="experience-links">
+                                <a href="assets/exp/ioc.mov" target="_blank">Video Demo of IOC scanners</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Vania Crystal Halim. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Horizontal scroll with mouse wheel (preserve trackpad native scrolling)
+        const timeline = document.querySelector('.experience-grid');
+        if (timeline) {
+            timeline.addEventListener('wheel', (e) => {
+                // Only intervene for vertical scroll when horizontal scrolling is possible
+                if (e.deltaY !== 0 && e.deltaX === 0) {
+                    // Check if we can scroll horizontally
+                    const canScrollLeft = timeline.scrollLeft > 0;
+                    const canScrollRight = timeline.scrollLeft < timeline.scrollWidth - timeline.clientWidth;
+                    
+                    if (canScrollLeft || canScrollRight) {
+                        e.preventDefault();
+                        // Use deltaY for horizontal scrolling with smooth behavior
+                        timeline.scrollBy({
+                            left: e.deltaY,
+                            behavior: 'auto'
+                        });
+                    }
+                }
+            }, { passive: false });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
