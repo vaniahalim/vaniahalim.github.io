@@ -1305,12 +1305,12 @@
         document.querySelectorAll('.project-card').forEach(card => {
             card.addEventListener('mouseenter', function() {
                 const emoji = this.querySelector('.project-image');
-                emoji.style.transform = 'scale(1.1) rotate(5deg)';
+                if (emoji) emoji.style.transform = 'scale(1.1) rotate(5deg)';
             });
             
             card.addEventListener('mouseleave', function() {
                 const emoji = this.querySelector('.project-image');
-                emoji.style.transform = 'scale(1) rotate(0deg)';
+                if (emoji) emoji.style.transform = 'scale(1) rotate(0deg)';
             });
         });
 
