@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Twin - Vania Halim</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/headshot.jpg" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-dark: #FBF7F4;
+            --bg-card: #FFFFFF;
+            --text-primary: #4A4145;
+            --text-secondary: #7A6F66;
+            --accent: #C9929A;
+            --accent-mauve: #9B8AA0;
+            --border: rgba(45, 42, 38, 0.08);
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-primary);
+            background: var(--bg-dark);
+            min-height: 100vh;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(251, 247, 244, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1.25rem 3rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 500;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--text-primary);
+        }
+
+        main {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 7rem 3rem 3rem;
+        }
+
+        .section-header {
+            margin-bottom: 2rem;
+        }
+
+        .section-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        .chat-frame-wrap {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(45, 42, 38, 0.08);
+        }
+
+        .chat-frame {
+            width: 100%;
+            height: calc(100vh - 16rem);
+            min-height: 600px;
+            border: none;
+            display: block;
+        }
+
+        .fallback {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .fallback a {
+            color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem 1.5rem; }
+            .nav-links { display: none; }
+            main { padding: 6rem 1.25rem 2rem; }
+            .chat-frame { min-height: 500px; height: calc(100vh - 14rem); }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Vania Halim</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="experience.html">Experience</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="chat.html" class="active">Digital Twin</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="section-header">
+            <h1>Chat with My Digital Twin</h1>
+            <p>
+                Ask about my background, experience, projects, and interests in AI, policy, and technology.
+                This AI assistant is built from my resume, LinkedIn, and portfolio.
+            </p>
+        </div>
+
+        <div class="chat-frame-wrap">
+            <iframe
+                class="chat-frame"
+                src="https://vaniacrystal-career-conversation.hf.space"
+                title="Vania Halim Digital Twin"
+                allow="microphone; camera"
+                loading="lazy"
+            ></iframe>
+        </div>
+
+        <p class="fallback">
+            Chat not loading?
+            <a href="https://vaniacrystal-career-conversation.hf.space" target="_blank" rel="noopener noreferrer">Open the app directly</a>.
+        </p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Vania Crystal Halim. All rights reserved.</p>
+    </footer>
+</body>
+</html>
