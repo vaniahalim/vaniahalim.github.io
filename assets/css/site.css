@@ -140,7 +140,7 @@ nav a:hover { color: var(--accent); border-color: var(--accent); }
 .row:last-child { border-bottom: 1px solid var(--rule); }
 .row h3 {
   margin: 0;
-  font: 500 clamp(32px, 6vw, 84px)/1 var(--display);
+  font: 500 clamp(26px, 4.4vw, 60px)/1 var(--display);
   font-variation-settings: "opsz" 144;
   letter-spacing: -.035em;
   transition: transform .5s var(--ease), color .25s;
@@ -152,7 +152,7 @@ nav a:hover { color: var(--accent); border-color: var(--accent); }
 .row-links a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--rule); }
 .row-links a:hover { color: var(--accent); border-color: var(--accent); }
 .row:hover h3, .row:focus-within h3 { font-style: italic; font-weight: 400; color: var(--accent); transform: translateX(14px); }
-.row .meta { color: var(--ink-soft); font-size: 16px; text-align: right; }
+.row .meta { color: var(--ink-soft); font-size: 15px; text-align: right; }
 @media (max-width: 700px) { .row .meta { grid-column: 1; text-align: left; } .row { grid-template-columns: minmax(0, 1fr); } }
 
 .peek {
